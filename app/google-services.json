@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "507402311588",
+    "firebase_url": "https://calitour-8695c.firebaseio.com",
+    "project_id": "calitour-8695c",
+    "storage_bucket": "calitour-8695c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:507402311588:android:ba8b5aef5f77949e",
+        "android_client_info": {
+          "package_name": "com.proyecto.sena.calitour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "507402311588-9k9tipd1q3u0f6t9ifssmqnj359le6ce.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAB0EDZvA6b3h11EHLQF8zxZ7NWY9XdkYE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "620892122502",
+    "firebase_url": "https://citasfb-8aaa4.firebaseio.com",
+    "project_id": "citasfb-8aaa4",
+    "storage_bucket": "citasfb-8aaa4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:620892122502:android:ba8b5aef5f77949e",
+        "android_client_info": {
+          "package_name": "com.proyecto.sena.calitour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "620892122502-1a8lvo4bgrabekoadv16rqhqdobsc65m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBTxAqzU-fTStEC3Vrd-FVlGuEX4O3x_k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:620892122502:android:3ab48de3902eab04",
+        "android_client_info": {
+          "package_name": "sena.edu.co.citasfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "620892122502-1a8lvo4bgrabekoadv16rqhqdobsc65m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBTxAqzU-fTStEC3Vrd-FVlGuEX4O3x_k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
