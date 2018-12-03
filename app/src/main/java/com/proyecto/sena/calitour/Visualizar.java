@@ -22,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,8 +45,8 @@ public class Visualizar extends AppCompatActivity {
 
     //Variables para referenciar los compontes graficos en el Layout
     List<String> listaBuscar;
-    EditText txtBuscar;
-    ListView listBuscar;
+    TextView txtBuscar;
+    Spinner listBuscar;
 
     int id=0;
     EditText txtNombre;
@@ -77,7 +78,7 @@ public class Visualizar extends AppCompatActivity {
         setContentView(R.layout.activity_visualizar);
 
         FirebaseApp.initializeApp(this);
-
+        dialog = new ProgressDialog(this);
         myDB = FirebaseFirestore.getInstance();
 
 
@@ -104,13 +105,6 @@ public class Visualizar extends AppCompatActivity {
 
         dialog = new ProgressDialog(this);
 
-      /*  btnRegresar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                buscar(v);
-            }
-        });*/
 
         listaBuscar = new ArrayList<String>();
         listarBuscar();
@@ -120,34 +114,33 @@ public class Visualizar extends AppCompatActivity {
 
 
 
-        txtBuscar.addTextChangedListener(new TextWatcher() {
+
+        //Escucha 0 y cuando se selecciona llena los dados.
+        listBuscar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                adapter.getFilter().filter(charSequence);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-        //Escucha listview y cuando se selecciona llena los dados.
-        listBuscar.setOnItemClickListener( new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int posicion, long ide) {
-
-                Toast. makeText (getApplicationContext(), "Seleccionadó: " +listaBuscar.get(posicion),
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id1)
+            {
+                Toast. makeText (getApplicationContext(), "Seleccionado: " +listaBuscar.get(position),
                         Toast. LENGTH_SHORT ).show();
-                id= posicion+1;
-                //listBuscar.setAdapter(null);
-               listBuscar.setAdapter(null);
-                buscar(view);
+                String[] seleccion = listaBuscar.get(position).split("-");
+                Log.d("tam ",""+seleccion.length);
+                for (int i=0;i<seleccion.length; i++)
+                {
+                    Log.d("arreglo "+i , seleccion[i]);
+                }
 
+                String valor=  seleccion[1];
+                id = Integer.parseInt(valor);
+                Log.d("",""+id);
+               // listBuscar = null;
+                buscar(view);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+                // can leave this empty
             }
         });
 
@@ -157,7 +150,7 @@ public class Visualizar extends AppCompatActivity {
     public void ibtnEmail(View view) {
 
 
-        String mail = "http://"+txtCorreoElectronico.getText().toString();
+        String mail = txtCorreoElectronico.getText().toString();
 
         enviarEmail(mail, "Peticion de informacion", "Buen dia le desea Cali Tour");
     }
@@ -165,31 +158,14 @@ public class Visualizar extends AppCompatActivity {
     //Metodo onClick para hacer llamada
     public void ibtnLlamada(View view) {
 
-        dialog.setMessage("Espere un momento");
-        dialog.show();
-
         String num = "032"+txtTelefonoFijo.getText().toString();
         hacerLlamada(num);
-
     }
 
     public void ibtnCell(View view) {
 
-        dialog.setMessage("Espere un momento");
-        dialog.show();
-
         String num = txtCelular.getText().toString();
         hacerLlamada(num);
-    }
-    //acceder a la pagina web
-    public void ibtnUrl(View view) {
-
-        dialog.setMessage("Espere un momento");
-        dialog.show();
-
-        String url = "http://"+txtSitioWeb.getText().toString();
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-
     }
 
 
@@ -201,6 +177,7 @@ public class Visualizar extends AppCompatActivity {
         dialog.setMessage("Espere un momento");
         dialog.show();
 
+        Log.d("va a buscar el ", ""+id);
         //Referencia a la colección (tabla) en FireBase y al respectivo documento (el documento tiene como id la cedula del paciente)
         DocumentReference docRef = myDB.collection(coleccion).document(""+id);
         docRef.get() //Busqueda del documento
@@ -243,8 +220,6 @@ public class Visualizar extends AppCompatActivity {
                             Toast.makeText(getApplication(), "Error: " + task.getException(), Toast.LENGTH_LONG).show();
                             dialog.dismiss(); //Cierre del ProgressDialog
                         }
-
-
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -258,15 +233,13 @@ public class Visualizar extends AppCompatActivity {
     }
     //Metodo para llenar el listview con la base de datos Firebase
     public void listarBuscar(){
-
-
         myDB.collection(coleccion).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     String text="";
                     for(QueryDocumentSnapshot document : task.getResult()){
-                        listaBuscar.add(document.getString("nombre"));
+                        listaBuscar.add(document.getString("nombre")+"-"+document.getString("id"));
                     }
                 }
             }
@@ -283,9 +256,6 @@ public class Visualizar extends AppCompatActivity {
     //Metodo para enviar un E-mail
     public void enviarEmail(String destino, String asunto, String mensaje) {
 
-        dialog.setMessage("Espere un momento");
-        dialog.show();
-
         //Intent para enviar Email
         Intent email = new Intent(Intent.ACTION_SEND);
         email.putExtra(Intent.EXTRA_EMAIL, new String[]{destino});
@@ -300,10 +270,6 @@ public class Visualizar extends AppCompatActivity {
     }
     //Metodo para hacer llamadas
     public void hacerLlamada(String numero) {
-
-        dialog.setMessage("Espere un momento");
-        dialog.show();
-
         try {
 
             //Verificación del API, si el API es mayor a 22 se debe solicitar explicitamente el
@@ -329,6 +295,11 @@ public class Visualizar extends AppCompatActivity {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public void btnRegresar(View view) {
+        Intent home = new Intent(getBaseContext(), HomeActivity.class);
+        startActivity(home);
     }
 
 

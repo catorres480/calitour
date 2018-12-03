@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,19 +12,20 @@
         android:orientation="vertical"
         android:gravity="bottom">
 
-        <EditText
+        <TextView
+            android:id="@+id/txtBuscar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtBuscar"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:spinnerMode="dialog"
             android:hint="Buscar"/>
-
-
-        <ListView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+        <com.toptoche.searchablespinnerlibrary.SearchableSpinner
             android:id="@+id/listBuscar"
-            android:dividerHeight="1dp"
-            android:footerDividersEnabled="false"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            />
 
         <TextView
             android:id="@+id/lblTitulo"
@@ -81,4 +82,4 @@
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

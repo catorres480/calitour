@@ -6,12 +6,14 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,8 +41,8 @@ public class Editar extends AppCompatActivity {
 
     //Variables para referenciar los compontes graficos en el Layout
     List<String> listaBuscar;
-    EditText txtBuscar;
-    ListView listBuscar;
+    TextView txtBuscar;
+    Spinner listBuscar;
 
     int id=0;
 
@@ -112,34 +114,35 @@ public class Editar extends AppCompatActivity {
         listBuscar.setAdapter(adapter);
 
 
-        txtBuscar.addTextChangedListener(new TextWatcher() {
+        //Escucha 0 y cuando se selecciona llena los dados.
+        listBuscar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                adapter.getFilter().filter(charSequence);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-        listBuscar.setOnItemClickListener( new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int posicion, long ide) {
-
-                Toast. makeText (getApplicationContext(), "Seleccionadó: " +listaBuscar.get(posicion),
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id1)
+            {
+                Toast. makeText (getApplicationContext(), "Seleccionado: " +listaBuscar.get(position),
                         Toast. LENGTH_SHORT ).show();
-                id= posicion+1;
-                listBuscar.setAdapter(null);
-                buscar(view);
+                String[] seleccion = listaBuscar.get(position).split("-");
+                Log.d("tam ",""+seleccion.length);
+                for (int i=0;i<seleccion.length; i++)
+                {
+                    Log.d("arreglo "+i , seleccion[i]);
+                }
 
+                String valor=  seleccion[1];
+                id = Integer.parseInt(valor);
+                Log.d("",""+id);
+                // listBuscar = null;
+                buscar(view);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+                // can leave this empty
             }
         });
+
     }
 
     //Método para actualizar tabla en la BD
@@ -194,7 +197,7 @@ public class Editar extends AppCompatActivity {
                 if(task.isSuccessful()){
                     String text="";
                     for(QueryDocumentSnapshot document : task.getResult()){
-                        listaBuscar.add(document.getString("nombre"));
+                        listaBuscar.add(document.getString("nombre")+"-"+document.getString("id"));
                     }
                 }
             }

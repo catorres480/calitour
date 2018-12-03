@@ -63,10 +63,10 @@ public class Agregar extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
 
         myDB = FirebaseFirestore.getInstance();
-        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+        /*FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
                 .setTimestampsInSnapshotsEnabled(true)
                 .build();
-        myDB.setFirestoreSettings(settings);
+        myDB.setFirestoreSettings(settings);*/
 
         twTitulo = findViewById(R.id.lblTitulo);
         txtNombre = findViewById(R.id.txtNombre);
@@ -91,6 +91,8 @@ public class Agregar extends AppCompatActivity {
                 guardar(v);
             }
             });*/
+
+        int id = obtenerId();
     }
 
 
@@ -134,7 +136,7 @@ public class Agregar extends AppCompatActivity {
                         dialog.dismiss(); //Cierre del ProgressDialog
                     }
                 });
-        cont = cont +1;
+
       return  cont;
     }
 
@@ -147,8 +149,9 @@ public class Agregar extends AppCompatActivity {
         //Inicio del ProgressDialog
         dialog.setMessage("Espere un momento");
         dialog.show();
-        int id = obtenerId();
-        Log.d("deberia guardar este ",""+id);
+
+        cont++;
+        Log.d("deberia guardar este ",""+cont);
 
 
 
@@ -160,7 +163,7 @@ public class Agregar extends AppCompatActivity {
         //HashMap es una estructura que permite almacenar datos usando la regla, llave => valor
         Map<String, Object> dato = new HashMap<>();
         //Para almacenar valores en un HashMap se utiliza el metodo put (llave, valor)
-        dato.put("id", ""+id);
+        dato.put("id", ""+cont);
         dato.put("celular", txtCelular.getText().toString());
         dato.put("correo_electronico", txtCorreoElectronico.getText().toString());
         dato.put("nombre", txtNombre.getText().toString());
@@ -168,7 +171,7 @@ public class Agregar extends AppCompatActivity {
         dato.put("telefono_fijo", txtTelefonoFijo.getText().toString());
         dato.put("sitio_web", txtSitioWeb.getText().toString());
         //Creación de un nuevo documento en la colección pacientes
-        datos.document(""+id)
+        datos.document(""+cont)
                 .set(dato) //Agregación del nuevo registro
                 .addOnSuccessListener(new OnSuccessListener() {
                     @Override
