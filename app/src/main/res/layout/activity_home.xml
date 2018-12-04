@@ -31,7 +31,7 @@ tools:context=".HomeActivity">
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/chaleco_salvavidas"
+                    android:src="@drawable/anadir"
                     android:onClick="btnSitiosTuristicos"
                     android:gravity="right"
                     android:background="#000000FF" />
@@ -72,7 +72,7 @@ tools:context=".HomeActivity">
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ubicacion"
+                    android:src="@drawable/chaleco_salvavidas"
                     android:text="@string/operadores_turisticos"
                     android:onClick="btnOperadores"
                     android:background="#000000FF"/>

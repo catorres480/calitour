@@ -16,6 +16,8 @@ import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -156,6 +158,10 @@ public class Visualizar extends AppCompatActivity {
     //Metodo onClick para enviar E-mail
     public void ibtnEmail(View view) {
 
+        //Inicio del ProgressDialog
+        dialog.setMessage("Espere un momento");
+        dialog.show();
+
 
         String mail = txtCorreoElectronico.getText().toString();
 
@@ -277,6 +283,11 @@ public class Visualizar extends AppCompatActivity {
     }
     //Metodo para hacer llamadas
     public void hacerLlamada(String numero) {
+
+        //Inicio del ProgressDialog
+        dialog.setMessage("Espere un momento");
+        dialog.show();
+
         try {
 
             //Verificación del API, si el API es mayor a 22 se debe solicitar explicitamente el
@@ -304,9 +315,23 @@ public class Visualizar extends AppCompatActivity {
         }
     }
 
-    public void btnRegresar(View view) {
-        Intent home = new Intent(getBaseContext(), HomeActivity.class);
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu, menu);
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    //Boton regreso action bar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        Intent home = new Intent(Visualizar.this, HomeActivity.class);
         startActivity(home);
+
+        return super.onContextItemSelected(item);
+
     }
 
 

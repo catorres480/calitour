@@ -3,7 +3,10 @@ package com.proyecto.sena.calitour;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -17,6 +20,13 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
     }
+
+
+
+
+
+
+
    public void btnSitiosTuristicos(View view) {
         Intent sitiosturisticos = new Intent(HomeActivity.this, SitiosTuristicos.class);
         startActivity(sitiosturisticos);

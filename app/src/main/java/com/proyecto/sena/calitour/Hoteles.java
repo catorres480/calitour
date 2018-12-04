@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Fade;
 import android.transition.Slide;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
@@ -59,6 +61,24 @@ public class Hoteles extends AppCompatActivity {
         activityEditar.putExtra("coleccion","hotel");
         activityEditar.putExtra("titulo","Editar Hotel");
         startActivity(activityEditar);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu, menu);
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    //Boton regreso action bar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        Intent home = new Intent(Hoteles.this, HomeActivity.class);
+        startActivity(home);
+
+        return super.onContextItemSelected(item);
+
     }
 
 

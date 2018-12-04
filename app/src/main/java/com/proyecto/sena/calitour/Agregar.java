@@ -1,9 +1,12 @@
 package com.proyecto.sena.calitour;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.webkit.ConsoleMessage;
 import android.widget.Button;
 import android.widget.EditText;
@@ -101,6 +104,10 @@ public class Agregar extends AppCompatActivity {
     }
 
 
+
+
+
+
     public int obtenerId()
     {
         String id = ""; //Variable para concatenas todos los valores de un documento
@@ -194,6 +201,24 @@ public class Agregar extends AppCompatActivity {
                     }
                 });
 
+
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu, menu);
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    //Boton regreso action bar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        Intent home = new Intent(Agregar.this, HomeActivity.class);
+        startActivity(home);
+
+        return super.onContextItemSelected(item);
 
     }
 

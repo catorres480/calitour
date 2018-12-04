@@ -1,12 +1,15 @@
 package com.proyecto.sena.calitour;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -272,6 +275,24 @@ public class Editar extends AppCompatActivity {
                         dialog.dismiss(); //Cierre del ProgressDialog
                     }
                 });
+
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu, menu);
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    //Boton regreso action bar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        Intent home = new Intent(Editar.this, HomeActivity.class);
+        startActivity(home);
+
+        return super.onContextItemSelected(item);
 
     }
 

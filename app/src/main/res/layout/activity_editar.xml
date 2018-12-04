@@ -10,22 +10,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="bottom">
+        android:gravity="center">
 
         <TextView
             android:id="@+id/txtBuscar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
+            android:padding="10dp"
             android:textStyle="bold"
             android:spinnerMode="dialog"
             android:hint="Buscar"/>
         <com.toptoche.searchablespinnerlibrary.SearchableSpinner
             android:id="@+id/listBuscar"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            />
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edit_text"/>
 
         <TextView
             android:id="@+id/lblTitulo"
@@ -34,51 +35,65 @@
             android:text="Editar...."
             android:textAlignment="center"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp" />
         <EditText
             android:id="@+id/txtNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:hint="@string/nombre" />
+            android:hint="@string/nombre"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edit_text"/>
 
         <EditText
             android:id="@+id/txtDireccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:hint="@string/direcci_n" />
+            android:hint="@string/direcci_n"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edit_text"/>
 
         <EditText
             android:id="@+id/txtSitioWeb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textUri"
-            android:hint="@string/sitio_web" />
+            android:hint="@string/sitio_web"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edit_text"/>
         <EditText
             android:id="@+id/txtCorreoElectronico"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:hint="@string/correo_electronico" />
+            android:hint="@string/correo_electronico"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edit_text"/>
         <EditText
             android:id="@+id/txtTelefonoFijo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="phone"
-            android:hint="@string/telefono_fijo" />
+            android:hint="@string/telefono_fijo"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edit_text"/>
 
         <EditText
             android:id="@+id/txtCelular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="phone"
-            android:hint="@string/celular" />
+            android:hint="@string/celular"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edit_text"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnModificar"
-            android:text="@string/modificar"/>
+            android:text="@string/modificar"
+            android:background="@drawable/button"/>
 
     </LinearLayout>
 

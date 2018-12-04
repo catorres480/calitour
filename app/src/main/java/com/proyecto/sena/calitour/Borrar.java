@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -271,6 +273,24 @@ public class Borrar extends AppCompatActivity {
     public void btnRegresar(View view) {
         Intent home = new Intent(getBaseContext(), HomeActivity.class);
         startActivity(home);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu, menu);
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    //Boton regreso action bar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        Intent home = new Intent(Borrar.this, HomeActivity.class);
+        startActivity(home);
+
+        return super.onContextItemSelected(item);
+
     }
 
 

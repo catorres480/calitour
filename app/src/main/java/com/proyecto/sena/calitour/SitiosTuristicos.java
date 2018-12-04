@@ -3,6 +3,8 @@ package com.proyecto.sena.calitour;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 public class SitiosTuristicos extends AppCompatActivity {
@@ -48,5 +50,22 @@ public class SitiosTuristicos extends AppCompatActivity {
         activityEditar.putExtra("coleccion","sitio_turistico");
         activityEditar.putExtra("titulo","Editar Sitio Turistico");
         startActivity(activityEditar);
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu, menu);
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    //Boton regreso action bar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        Intent home = new Intent(SitiosTuristicos.this, HomeActivity.class);
+        startActivity(home);
+
+        return super.onContextItemSelected(item);
+
     }
 }
