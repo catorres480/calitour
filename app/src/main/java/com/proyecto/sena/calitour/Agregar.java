@@ -60,6 +60,11 @@ public class Agregar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar);
 
+        //Activar icono en action bar.
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
+
         FirebaseApp.initializeApp(this);
 
         myDB = FirebaseFirestore.getInstance();

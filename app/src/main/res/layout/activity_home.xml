@@ -6,33 +6,80 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".HomeActivity">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="bottom"
-    android:orientation="vertical">
-
-    <Button
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sitios_tur_sticos"
-        android:onClick="btnSitiosTuristicos"/>
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sitios_tur_sticos"
+                    android:textColor="@color/primary_text"
+                    android:textStyle="bold"
+                    android:textSize="30dp"
+                    android:gravity="center"
+                    android:paddingTop="40dp"
+                    android:paddingRight="10dp"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/chaleco_salvavidas"
+                    android:onClick="btnSitiosTuristicos"
+                    android:gravity="right"
+                    android:background="#000000FF" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hoteles"
+                    android:textColor="@color/primary_text"
+                    android:textStyle="bold"
+                    android:textSize="30dp"
+                    android:gravity="center"
+                    android:paddingTop="40dp"
+                    android:paddingRight="10dp"/>
 
 
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hoteles"
-        android:onClick="btnHoteles" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/equipaje"
+                    android:onClick="btnHoteles"
+                    android:background="#000000FF"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/operadores_turisticos"
-        android:onClick="btnOperadores" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/operadores_turisticos"
+                    android:textColor="@color/primary_text"
+                    android:textStyle="bold"
+                    android:textSize="30dp"
+                    android:gravity="center"
+                    android:paddingTop="40dp"
+                    android:paddingRight="10dp"/>
 
-</LinearLayout>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ubicacion"
+                    android:text="@string/operadores_turisticos"
+                    android:onClick="btnOperadores"
+                    android:background="#000000FF"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
 </android.support.constraint.ConstraintLayout>

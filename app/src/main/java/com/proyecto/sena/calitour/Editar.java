@@ -73,6 +73,11 @@ public class Editar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar);
 
+        //Activar icono en action bar.
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
+
 
         FirebaseApp.initializeApp(this);
 

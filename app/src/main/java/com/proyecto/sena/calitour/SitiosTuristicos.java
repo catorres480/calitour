@@ -11,6 +11,11 @@ public class SitiosTuristicos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sitiosturisticos);
+
+        //Activar icono en action bar.
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
     }
 
     //Evento para invocar la Activity Visualizar

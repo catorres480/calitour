@@ -11,6 +11,11 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        //Activar icono en action bar.
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
     }
    public void btnSitiosTuristicos(View view) {
         Intent sitiosturisticos = new Intent(HomeActivity.this, SitiosTuristicos.class);
@@ -22,6 +27,7 @@ public class HomeActivity extends AppCompatActivity {
     }
     public void btnOperadores(View view) {
         Intent Operadorturistico = new Intent(getBaseContext(), OperadorTuristico.class);
+        Operadorturistico.putExtra("titulo","Ver Operador turistico");
         startActivity(Operadorturistico);
     }
 }

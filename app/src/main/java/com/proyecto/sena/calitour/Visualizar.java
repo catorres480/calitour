@@ -77,6 +77,13 @@ public class Visualizar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visualizar);
 
+        //Activar icono en action bar.
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
+
+        //Inicializar bd FireBase
+
         FirebaseApp.initializeApp(this);
         dialog = new ProgressDialog(this);
         myDB = FirebaseFirestore.getInstance();

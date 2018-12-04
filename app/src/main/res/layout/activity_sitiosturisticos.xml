@@ -9,34 +9,83 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="bottom">
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnVisualizar"
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="visualizar"
-            android:text="@string/visualizar"/>
-        <Button
-            android:id="@+id/btnAdicionar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="agregar"
-            android:text="@string/adicionar"/>
-        <Button
-            android:id="@+id/btnModificar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="editar"
-            android:text="@string/modificar"/>
-        <Button
-            android:id="@+id/btnBorrar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="borrar"
-            android:text="@string/borrar"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:text="@string/sitios_tur_sticos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:gravity="center"
+                android:paddingTop="40dp"
+                android:paddingRight="10dp"
+                android:textAlignment="gravity"/>
+
+            <TableRow
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:id="@+id/btnVisualizar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/binoculares"
+                    android:background="#000000FF"
+                    android:onClick="visualizar"
+                    android:text="@string/visualizar"
+                    android:textAlignment="center"
+                    android:layout_margin="30dp"/>
+
+                <ImageButton
+                    android:id="@+id/btnAdicionar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#000000FF"
+                    android:src="@drawable/anadir"
+                    android:textAlignment="center"
+                    android:layout_margin="30dp"
+                    android:onClick="agregar"
+                    android:text="@string/adicionar"/>
+            </TableRow>
+            <TableRow
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:id="@+id/btnModificar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#000000FF"
+                    android:src="@drawable/archivo"
+                    android:textAlignment="center"
+                    android:layout_margin="30dp"
+                    android:onClick="editar"
+                    android:text="@string/modificar"/>
+                <ImageButton
+                    android:id="@+id/btnBorrar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#000000FF"
+                    android:src="@drawable/basura"
+                    android:textAlignment="center"
+                    android:layout_margin="30dp"
+                    android:onClick="borrar"
+                    android:text="@string/borrar"/>
+            </TableRow>
+        </TableLayout>
     </LinearLayout>
+
 
 
 </android.support.constraint.ConstraintLayout>
