@@ -177,6 +177,10 @@ public class Borrar extends AppCompatActivity {
 
 
                         dialog.dismiss(); //Cierre del ProgressDialog
+                        Intent home = new Intent(Borrar.this, HomeActivity.class);
+                        startActivity(home);
+
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -239,6 +243,8 @@ public class Borrar extends AppCompatActivity {
 
                                 dialog.dismiss();
 
+
+
                             } else { //En caso tal la busqueda no sea exitosa
                                 Toast.makeText(getApplication(), "No existe", Toast.LENGTH_LONG).show();
                                 //Limpiar las cajas de texto sino el registro a buscar no existe
@@ -252,6 +258,8 @@ public class Borrar extends AppCompatActivity {
 
 
                                 dialog.dismiss(); //Cierre del ProgressDialog
+
+
                             }
                         } else {
 

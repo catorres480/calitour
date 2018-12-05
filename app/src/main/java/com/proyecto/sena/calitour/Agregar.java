@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -156,51 +157,68 @@ public class Agregar extends AppCompatActivity {
     //Método para guardar nuevo registro en la BD
     public void guardar(View v)
     {
+        if( TextUtils.isEmpty(txtNombre.getText())) {
+            txtNombre.setError("El nombre es requerido!");
+        }
+        else if( TextUtils.isEmpty(txtDireccion.getText())) {
+            txtDireccion.setError("La dirección es requerida!");
+        }
+        else if( TextUtils.isEmpty(txtSitioWeb.getText())) {
+            txtSitioWeb.setError("El sitio web es requerido!");
+        }
+        else if( TextUtils.isEmpty(txtCorreoElectronico.getText())) {
+            txtCorreoElectronico.setError("El correo es requerido!");
+        }
+        else if( TextUtils.isEmpty(txtTelefonoFijo.getText())) {
+            txtTelefonoFijo.setError("El telefono es requerido!");
+        }
+        else if( TextUtils.isEmpty(txtCelular.getText())) {
+            txtCelular.setError("El celular es requerido!");
+        }
+        else {
 
 
-        //Inicio del ProgressDialog
-        dialog.setMessage("Espere un momento");
-        dialog.show();
+            //Inicio del ProgressDialog
+            dialog.setMessage("Espere un momento");
+            dialog.show();
 
-        cont++;
-        Log.d("deberia guardar este ",""+cont);
-
-
-
-        //Referencia a la colección en FireBase (sino existe la crea)
-        CollectionReference datos = myDB.collection(coleccion);
+            cont++;
+            Log.d("deberia guardar este ", "" + cont);
 
 
+            //Referencia a la colección en FireBase (sino existe la crea)
+            CollectionReference datos = myDB.collection(coleccion);
 
-        //HashMap es una estructura que permite almacenar datos usando la regla, llave => valor
-        Map<String, Object> dato = new HashMap<>();
-        //Para almacenar valores en un HashMap se utiliza el metodo put (llave, valor)
-        dato.put("id", ""+cont);
-        dato.put("celular", txtCelular.getText().toString());
-        dato.put("correo_electronico", txtCorreoElectronico.getText().toString());
-        dato.put("nombre", txtNombre.getText().toString());
-        dato.put("direccion", txtDireccion.getText().toString());
-        dato.put("telefono_fijo", txtTelefonoFijo.getText().toString());
-        dato.put("sitio_web", txtSitioWeb.getText().toString());
-        //Creación de un nuevo documento en la colección pacientes
-        datos.document(""+cont)
-                .set(dato) //Agregación del nuevo registro
-                .addOnSuccessListener(new OnSuccessListener() {
-                    @Override
-                    public void onSuccess(Object o) { //Listener en caso de exito
-                        Toast.makeText(getApplication(), "Registro guardado", Toast.LENGTH_LONG).show();
-                        dialog.dismiss(); //cierre del ProgressDialog
-                    }
 
-                })
-                .addOnFailureListener(new OnFailureListener() { //Listener en caso de error
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getApplication(), "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                        dialog.dismiss(); //cierre del ProgressDialog
-                    }
-                });
+            //HashMap es una estructura que permite almacenar datos usando la regla, llave => valor
+            Map<String, Object> dato = new HashMap<>();
+            //Para almacenar valores en un HashMap se utiliza el metodo put (llave, valor)
+            dato.put("id", "" + cont);
+            dato.put("celular", txtCelular.getText().toString());
+            dato.put("correo_electronico", txtCorreoElectronico.getText().toString());
+            dato.put("nombre", txtNombre.getText().toString());
+            dato.put("direccion", txtDireccion.getText().toString());
+            dato.put("telefono_fijo", txtTelefonoFijo.getText().toString());
+            dato.put("sitio_web", txtSitioWeb.getText().toString());
+            //Creación de un nuevo documento en la colección pacientes
+            datos.document("" + cont)
+                    .set(dato) //Agregación del nuevo registro
+                    .addOnSuccessListener(new OnSuccessListener() {
+                        @Override
+                        public void onSuccess(Object o) { //Listener en caso de exito
+                            Toast.makeText(getApplication(), "Registro guardado", Toast.LENGTH_LONG).show();
+                            dialog.dismiss(); //cierre del ProgressDialog
+                        }
 
+                    })
+                    .addOnFailureListener(new OnFailureListener() { //Listener en caso de error
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getApplication(), "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                            dialog.dismiss(); //cierre del ProgressDialog
+                        }
+                    });
+        }
 
     }
 
