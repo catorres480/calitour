@@ -158,9 +158,7 @@ public class Visualizar extends AppCompatActivity {
     //Metodo onClick para enviar E-mail
     public void ibtnEmail(View view) {
 
-        //Inicio del ProgressDialog
-        dialog.setMessage("Espere un momento");
-        dialog.show();
+        //Inicio del ProgressDialo
 
 
         String mail = txtCorreoElectronico.getText().toString();
@@ -243,6 +241,7 @@ public class Visualizar extends AppCompatActivity {
                     }
                 });
 
+
     }
     //Metodo para llenar el listview con la base de datos Firebase
     public void listarBuscar(){
@@ -269,6 +268,9 @@ public class Visualizar extends AppCompatActivity {
     //Metodo para enviar un E-mail
     public void enviarEmail(String destino, String asunto, String mensaje) {
 
+        dialog.setMessage("Espere un momento");
+        dialog.show();
+
         //Intent para enviar Email
         Intent email = new Intent(Intent.ACTION_SEND);
         email.putExtra(Intent.EXTRA_EMAIL, new String[]{destino});
@@ -279,6 +281,8 @@ public class Visualizar extends AppCompatActivity {
         email.setType("message/rfc822");
 
         startActivity(Intent.createChooser(email, "Seleccione un cliente de correo:"));
+
+        dialog.dismiss();
 
     }
     //Metodo para hacer llamadas
@@ -313,6 +317,7 @@ public class Visualizar extends AppCompatActivity {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        dialog.dismiss();
     }
 
 

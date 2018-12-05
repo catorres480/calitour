@@ -77,7 +77,9 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/remote_desktop"/>
+                android:src="@drawable/remote_desktop"
+                android:background="#000000FF"
+                android:layout_marginBottom="20dp"/>
 
             </TableRow>
         <TableRow>
@@ -95,7 +97,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/email_outline"
-                android:onClick="ibtnEmail"/>
+                android:onClick="ibtnEmail"
+                android:background="#000000FF"
+                android:layout_marginBottom="20dp"/>
 
         </TableRow>
 
@@ -113,7 +117,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/phone_classic"
-                android:onClick="ibtnLlamada"/>
+                android:onClick="ibtnLlamada"
+                android:background="#000000FF"
+                android:layout_marginBottom="20dp"/>
 
         </TableRow>
 
@@ -135,7 +141,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/cellphone_basic"
-                android:onClick="ibtnCell"/>
+                android:onClick="ibtnCell"
+                android:background="#000000FF"
+                android:layout_marginBottom="20dp"/>
 
         </TableRow>
         </TableLayout>
